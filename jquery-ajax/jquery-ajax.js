@@ -2127,5 +2127,5 @@ jQuery.param = function( a, traditional ) {
   // Return the resulting serialization
   return s.join( "&" ).replace( r20, "+" );
 };
-
-export default jQuery;
+const ajax = jQuery.ajax;
+export {ajax as default, jQuery };
