@@ -400,8 +400,6 @@ function isArrayLike(obj) {
     typeof length === "number" && length > 0 && (length - 1) in obj;
 }
 
-var rsingleTag = (/^<([a-z][^\/\0>:\x20\t\r\n\f]*)[\x20\t\r\n\f]*\/?>(?:<\/\1>|)$/i);
-
 var rnothtmlwhite = (/[^\x20\t\r\n\f]+/g);
 
 
@@ -1095,22 +1093,6 @@ var access = function (elems, fn, key, value, chainable, emptyGet, raw) {
 
   return len ? fn(elems[0], key) : emptyGet;
 };
-
-
-// Matches dashed string for camelizing
-var rdashAlpha = /-([a-z])/g;
-
-// Used by camelCase as callback to replace()
-function fcamelCase(_all, letter) {
-  return letter.toUpperCase();
-}
-
-// Convert dashed to camelCase
-function camelCase(string) {
-  return string.replace(rdashAlpha, fcamelCase);
-}
-
-var pnum = (/[+-]?(?:\d*\.|)\d+(?:[eE][+-]?\d+|)/).source;
 
 var
   r20 = /%20/g,
