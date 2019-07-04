@@ -1,33 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>Title of the document</title>
-	<!--<script src="../dist/jquery.js"></script>-->
+  <meta charset="UTF-8">
+  <title>Title of the document</title>
 </head>
 
 <body>
-Content of the document......
 <script type="module">
-	import AA from './wrapper.js';
+  import AA from './wrapper.js';
 
-	window.AA = AA;
-	console.log(AA.ajax);
-	AA.ajax({url: "http://localhost:4001/students", dataType: "json"})
-		.done((r) => {console.log( r );});
+  window.AA = AA;
+
+  AA.ajax({
+    method: "POST", dataType: "json",
+    url: "http://localhost:4001/students",
+    data: {id: 11, name: "student 11", email: "student-11@school.edu"}
+  }).done(function (msg) {
+    console.log("Data POST: ", msg);
+  });
+
+  AA.ajax({
+    method: "PUT",
+    url: "http://localhost:4001/students/2",
+    data: {id: 2, name: "student 2.2", email: "student-2-2@school.edu"}
+  }).done(function (msg) {
+    console.log("Data PUT: ", msg);
+  });
+
+  AA.ajax({
+    method: "DELETE",
+    url: "http://localhost:4001/students/3", dataType: "json"
+  }).done(function (msg) {
+    console.log("Data DELETE: ", msg);
+  });
+
+  /*AA.ajax({url: "http://localhost:4001/students", dataType: "json"})
+    .done((r) => {r.forEach(c => console.log(c));});*/
+
 </script>
-<script type="text/javascript">
-
-	/*const fn = () => {
-		console.log('here');
-		$.ajax({url: "http://localhost:4001/students", dataType: "json"})
-			.done((r) => {console.log( r );});
-	};
-
-	setTimeout(fn, 2000);*/
-
-</script>
-
 </body>
 
 
