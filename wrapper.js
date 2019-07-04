@@ -443,16 +443,7 @@ function isArrayLike( obj ) {
 	return type === "array" || length === 0 ||
 		typeof length === "number" && length > 0 && ( length - 1 ) in obj;
 }
-var documentElement = document.documentElement;
 
-
-
-
-function nodeName( elem, name ) {
-
-	return elem.nodeName && elem.nodeName.toLowerCase() === name.toLowerCase();
-
-};
 var rsingleTag = ( /^<([a-z][^\/\0>:\x20\t\r\n\f]*)[\x20\t\r\n\f]*\/?>(?:<\/\1>|)$/i );
 
 // Initialize a jQuery object
@@ -1371,21 +1362,6 @@ var rcssNum = new RegExp( "^(?:([+-])=|)(" + pnum + ")([a-z%]*)$", "i" );
 
 
 
-
-var isAttached = function( elem ) {
-		return jQuery.contains( elem.ownerDocument, elem );
-	},
-	composed = { composed: true };
-
-// Support: IE 9 - 11+, Edge 12 - 18+
-// Check attachment across shadow DOM boundaries when possible (gh-3504)
-if ( documentElement.getRootNode ) {
-	isAttached = function( elem ) {
-		return jQuery.contains( elem.ownerDocument, elem ) ||
-			elem.getRootNode( composed ) === elem.ownerDocument;
-	};
-}
-var isIE = document.documentMode;
 
 var rcheckableType = ( /^(?:checkbox|radio)$/i );
 
